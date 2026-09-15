@@ -513,7 +513,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## 📧 Contact
 
 - **Author:** Ivan Levitsky
-- **Email:** vanlevitsky.fourmetrsquared@gmail.com
+- **Email:** ivanlevitsky.fourmetrsquared@gmail.com
 - **GitHub:** [github.com/fourmetrsquared](https://github.com/fourmetrsquared)
 
 ---
