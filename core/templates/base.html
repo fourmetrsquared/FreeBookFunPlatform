@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_css %} {% endblock extra_css %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                    <a href="">Projects</a>
+                </li>
+                <li>
+                    <a href="">Videos</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'profile' user.pk %}">Profile</a>
+                    </li>
+                    <li>
+                        <a href="">Log Out</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="">Log In</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    {% block content %} {% endblock content %}
+</body>
+</html>

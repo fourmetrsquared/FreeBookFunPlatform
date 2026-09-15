@@ -1,0 +1,102 @@
+:root {
+    --bg: #32302f;
+    --fg: #ebdbb2;
+    --primary: #504945;
+    --link: #fb4934;
+    --accent: #fabd2f;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    width: 90%;
+    margin: 5vh auto;
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    background-color: var(--bg);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--fg);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-block;
+    padding: 10px 5px;
+}
+
+nav ul li a:hover {
+    transform: scale(1.1);
+    color: var(--link); /* Pops with Gruvbox Bright Red on hover */
+}
+
+section {
+    background-image: url("https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/painting/Cat_at_Play.png?raw=true");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 85%;
+    margin: 2vh auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Text shadow now uses Gruvbox colors for a cohesive, stylized look */
+    text-shadow: 3px 3px 0px var(--bg), 6px 6px 0px var(--primary);
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section h1 {
+    font-size: 120px;
+    font-family: 'Persona 5 Menu Font Prototype';
+    margin: 0;
+    line-height: 1;
+    color: var(--fg);
+}
+
+section h2 {
+    font-size: 20px;
+    font-family: 'Who Dares?!';
+    margin: 0;
+    font-weight: normal;
+    color: var(--fg);
+}
+
+@media (max-width: 768px) {
+    header section h1 {
+        font-size: 60px;
+    }
+
+    header section h2 {
+        font-size: 16px;
+    }
+
+    nav ul li {
+        margin: 0 8px;
+    }
+}
