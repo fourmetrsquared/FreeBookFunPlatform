@@ -3,37 +3,37 @@
 
 {% block title %}
     {{ user.username }}'s Profile
-{% endblock title %}
+{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
-{% endblock extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <h2 class="form-title">Update Profile</h2>
+<div class="profile-container">
+    <h1 class="page-title">profile</h1>
 
-    <!-- enctype is REQUIRED for ImageField (avatar) uploads to work -->
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="profile-form">
         {% csrf_token %}
 
-        <!-- Avatar Preview Section -->
+        <!-- Avatar Section -->
         <div class="avatar-section">
             <div class="avatar-frame">
                 {% if user.profile.avatar %}
-                    <img src="{{ user.profile.avatar.url }}" alt="Profile Avatar" class="avatar-preview" id="avatar-preview">
+                    <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="avatar-preview" id="avatar-preview">
                 {% else %}
                     <img src="{% static 'default_avatar.png' %}" alt="Default Avatar" class="avatar-preview" id="avatar-preview">
                 {% endif %}
             </div>
-            <label for="id_avatar" class="avatar-upload-label">Change Avatar</label>
+            <label for="id_avatar" class="avatar-label">change avatar</label>
+            {{ profile_form.avatar }}
         </div>
 
-        <!-- All Form Fields in One Frame -->
-        <div class="form-fields">
+        <!-- Form Fields -->
+        <div class="form-section">
             {% for field in user_form %}
-                <div class="form-group">
-                    {{ field.label_tag }}
+                <div class="field-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                     {{ field }}
                     {% if field.help_text %}
                         <small class="help-text">{{ field.help_text }}</small>
@@ -46,8 +46,8 @@
 
             {% for field in profile_form %}
                 {% if field.name != 'avatar' %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
+                    <div class="field-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {{ field }}
                         {% if field.help_text %}
                             <small class="help-text">{{ field.help_text }}</small>
@@ -58,14 +58,9 @@
                     </div>
                 {% endif %}
             {% endfor %}
-        </div>
 
-        <!-- Hidden file input for avatar -->
-        <div style="display: none;">
-            {{ profile_form.avatar }}
+            <button type="submit" class="submit-btn">save changes</button>
         </div>
-
-        <button type="submit" class="btn-submit">Save Changes</button>
     </form>
 </div>
 
@@ -82,4 +77,4 @@ document.getElementById('id_avatar').addEventListener('change', function(e) {
     }
 });
 </script>
-{% endblock content %}
+{% endblock %}

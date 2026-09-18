@@ -1,102 +1,131 @@
 :root {
-    --bg: #32302f;
-    --fg: #ebdbb2;
-    --primary: #504945;
-    --link: #fb4934;
-    --accent: #fabd2f;
+    --bg: #0a0a0a;
+    --fg: #f5f5f0;
+    --muted: #8a8a7a;
+    --border: #2a2a2a;
+    --accent: #f0e6d2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg);
+    background: var(--bg);
     color: var(--fg);
-    margin: 0;
-}
-
-header {
-    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+/* ── Global Halftone Dot Pattern ── */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 8px 8px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ── Header & Navigation ── */
+header {
+    width: 100%;
+    padding: 40px 20px 0;
 }
 
 nav {
-    width: 90%;
-    margin: 5vh auto;
-    border: 2px solid var(--primary);
-    border-radius: 20px;
-    background-color: var(--bg);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--fg);
-    font-weight: 500;
-    transition: all 0.2s ease;
-    display: inline-block;
-    padding: 10px 5px;
-}
-
-nav ul li a:hover {
-    transform: scale(1.1);
-    color: var(--link); /* Pops with Gruvbox Bright Red on hover */
-}
-
-section {
-    background-image: url("https://github.com/AngelJumbo/gruvbox-wallpapers/blob/main/wallpapers/painting/Cat_at_Play.png?raw=true");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 80vh;
-    width: 85%;
-    margin: 2vh auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Text shadow now uses Gruvbox colors for a cohesive, stylized look */
-    text-shadow: 3px 3px 0px var(--bg), 6px 6px 0px var(--primary);
-    border-radius: 20px;
-    flex-direction: column;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-section h1 {
-    font-size: 120px;
-    font-family: 'Persona 5 Menu Font Prototype';
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+/* Standard Links */
+nav ul li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+/* Logout Form & Button (Styled to look exactly like a link) */
+.nav-form {
     margin: 0;
-    line-height: 1;
-    color: var(--fg);
+    padding: 0;
+    display: inline;
 }
 
-section h2 {
-    font-size: 20px;
-    font-family: 'Who Dares?!';
-    margin: 0;
-    font-weight: normal;
-    color: var(--fg);
+.nav-link {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 14px;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
 }
 
+.nav-link:hover {
+    color: var(--accent);
+}
+
+/* Minimal Dashed Divider */
+.nav-divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 30px 10%;
+    opacity: 0.6;
+}
+
+/* ── Main Content Area ── */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ─ Mobile Adjustments ── */
 @media (max-width: 768px) {
-    header section h1 {
-        font-size: 60px;
+    nav ul {
+        gap: 15px 20px;
     }
 
-    header section h2 {
-        font-size: 16px;
+    header {
+        padding: 20px 10px 0;
     }
 
-    nav ul li {
-        margin: 0 8px;
+    .nav-divider {
+        margin: 20px 5%;
     }
 }

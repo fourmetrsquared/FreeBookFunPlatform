@@ -3,38 +3,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}whatisitsound{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    {% block extra_css %} {% endblock extra_css %}
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li>
-                    <a href="{% url 'home' %}">Home</a>
-                </li>
-                <li>
-                    <a href="">Projects</a>
-                </li>
-                <li>
-                    <a href="">Videos</a>
-                </li>
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li><a href="#">projects</a></li>
+                <li><a href="{% url 'books:book_list' %}">books</a></li>
+
                 {% if user.is_authenticated %}
+                    <li><a href="{% url 'accounts:profile' %}">profile</a></li>
                     <li>
-                        <a href="{% url 'profile' user.pk %}">Profile</a>
-                    </li>
-                    <li>
-                        <a href="">Log Out</a>
+                        <form action="{% url 'accounts:logout' %}" method="post" class="nav-form">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link">log out</button>
+                        </form>
                     </li>
                 {% else %}
-                    <li>
-                        <a href="">Log In</a>
-                    </li>
+                    <li><a href="{% url 'accounts:login' %}">log in</a></li>
+                    <li><a href="#">register</a></li>
                 {% endif %}
             </ul>
+            <hr class="nav-divider">
         </nav>
     </header>
-    {% block content %} {% endblock content %}
+
+    <main>
+        {% block content %}{% endblock content %}
+        <a href="{% url 'accounts:profile' user.username %}"></a>
+    </main>
+
+    {% block extra_js %}{% endblock extra_js %}
 </body>
 </html>

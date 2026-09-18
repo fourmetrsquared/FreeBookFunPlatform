@@ -1,0 +1,119 @@
+:root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f0;
+    --muted: #8a8a7a;
+    --border: #2a2a2a;
+    --accent: #f0e6d2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Subtle dot pattern (matches login page) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 8px 8px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ── Minimal Navigation ── */
+nav {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+/* ── Hero Section ── */
+.hero-container {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.username {
+    font-size: clamp(40px, 8vw, 90px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+    color: var(--fg);
+    line-height: 1.1;
+}
+
+/* Blinking terminal cursor */
+.cursor {
+    display: inline-block;
+    width: 0.6em;
+    color: var(--accent);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.bio {
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .hero-container {
+        min-height: auto;
+        padding: 100px 20px;
+    }
+}

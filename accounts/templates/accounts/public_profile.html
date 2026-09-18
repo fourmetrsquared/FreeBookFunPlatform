@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ profile_user.username }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/public_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <a href="javascript:history.back()" class="back-link">← back</a>
+        <h1>public profile</h1>
+        <p class="username-display">@{{ profile_user.username }}</p>
+    </div>
+
+    <div class="public-profile-card">
+        <div class="avatar-section">
+            <div class="avatar-frame">
+                {% if profile_user.profile.avatar %}
+                    <img src="{{ profile_user.profile.avatar.url }}" alt="Avatar" class="avatar-preview">
+                {% else %}
+                    <img src="{% static 'default_avatar.png' %}" alt="Default Avatar" class="avatar-preview">
+                {% endif %}
+            </div>
+            
+            <div class="user-info">
+                <p class="bio-text">
+                    {% if profile_user.profile.bio %}
+                        {{ profile_user.profile.bio }}
+                    {% else %}
+                        <span class="muted">no bio provided.</span>
+                    {% endif %}
+                </p>
+                <p class="meta-text">member since {{ profile_user.date_joined|date:"M Y" }}</p>
+            </div>
+        </div>
+
+        <!-- Optional: Link to their specific content -->
+        <div class="profile-actions">
+            <a href="{% url 'books:book_list' %}?author={{ profile_user.username }}" class="btn-link">view their books →</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

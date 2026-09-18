@@ -1,0 +1,77 @@
+/* ── Public Profile Specifics ── */
+.back-link {
+    display: inline-block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.public-profile-card {
+    border: 1px dashed var(--border);
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.user-info {
+    flex: 1;
+}
+
+.bio-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--fg);
+    margin-bottom: 20px;
+}
+
+.meta-text {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+}
+
+.muted {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.profile-actions {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--border);
+}
+
+.btn-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: lowercase;
+    transition: opacity 0.2s ease;
+}
+
+.btn-link:hover {
+    opacity: 0.7;
+}
+
+/* Mobile adjustment for public profile */
+@media (max-width: 768px) {
+    .public-profile-card {
+        padding: 25px;
+    }
+
+    .avatar-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block title %}
-    Home
-{% endblock title %}
+{% block title %}Home{% endblock %}
 
 {% block extra_css %}
-
-{% endblock extra_css %}
+<link rel="stylesheet" href="{% static 'css/core/home.css' %}">
+{% endblock %}
 
 {% block content %}
-    <section>
-            <h1>@whatisitsound</h1>
-            <h2>That is the very username under which you know the 23-year-old programming instructor who started his own blog.</h2>
-    </section>
-{% endblock content %}
-
-{% block extra_js %}
-
-{% endblock extra_js %}
+<main class="hero-container">
+    <div class="hero-content">
+        <h1 class="username"><span class="cursor">_</span>@whatisitsound</h1>
+        <p class="bio">
+            That is the very username under which you know the 23-year-old
+            programming instructor who started his own blog.
+        </p>
+    </div>
+</main>
+{% endblock %}
